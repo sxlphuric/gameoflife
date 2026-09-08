@@ -6,26 +6,27 @@
   };
 
   outputs = inputs: {
-    packages = builtins.mapAttrs (system: pkgs: {
-      gameoflife = 
-      {lib,stdenv}:
-        stdenv.mkDerivation {
-        pname = "gameoflife";
-        version = "4.0.1";
+    packages =
+      builtins.mapAttrs (system: pkgs: {
+        gameoflife = {
+          lib,
+          stdenv,
+        }:
+          stdenv.mkDerivation {
+            pname = "gameoflife";
+            version = "4.0.1";
 
-        
-        src = let
-          files = ./main.cpp;
+            src = let
+              files = ./main.cpp;
+            in
+              lib.fileset.toSource {
+                root = ./.;
+                fileset = lib.fileset.trace ./main.cpp;
+              };
+          };
 
-        in lib.fileset.toSource {
-          root = ./.;
-          fileset = lib.fileset.trace ./main.cpp;
-        };
-      };
-
-      
-
-      default = inputs.self.packages.${system}.gameoflife;
-    }) inputs.nixpkgs.legacyPackages;
+        default = inputs.self.packages.${system}.gameoflife;
+      })
+      inputs.nixpkgs.legacyPackages;
   };
 }
