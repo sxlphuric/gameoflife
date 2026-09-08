@@ -5,25 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = inputs: {
+  outputs = inputs: let
+  in {
     packages =
       builtins.mapAttrs (system: pkgs: {
-        gameoflife = {
-          lib,
-          stdenv,
-        }:
-          stdenv.mkDerivation {
-            pname = "gameoflife";
-            version = "4.0.1";
-
-            src = let
-              files = ./main.cpp;
-            in
-              lib.fileset.toSource {
-                root = ./.;
-                fileset = lib.fileset.trace ./main.cpp;
-              };
-          };
+        gameoflife = pkgs.callPackage ./default.nix {};
 
         default = inputs.self.packages.${system}.gameoflife;
       })
