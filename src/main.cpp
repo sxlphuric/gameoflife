@@ -202,6 +202,7 @@ void randomMap() {
       }
     }
   }
+}
 
 void clearBoard() {
     chunksCount = 0;
