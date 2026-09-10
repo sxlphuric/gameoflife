@@ -241,7 +241,7 @@ void updateCamera() {
 
 void displayByte(byte by) {
     for (uint8_t b = 0; b < 8; b++) {
-        std::cout << (bitRead(by,b) ? '#' : '.');
+        std::cout << (bitRead(by,b) ? "█" : " ");
     }
 }
 
