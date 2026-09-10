@@ -1,8 +1,7 @@
 { lib
 , llvmPackages_23
 , cmake
-, spdlog
-, abseil-cpp }:
+, ncurses }:
 
 llvmPackages_23.stdenv.mkDerivation rec {
   pname = "cpp-examples";
@@ -11,7 +10,7 @@ llvmPackages_23.stdenv.mkDerivation rec {
   src = ./.;
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ spdlog abseil-cpp ];
+  buildInputs = [ ncurses ];
 
   cmakeFlags = [
     "-DENABLE_TESTING=OFF"

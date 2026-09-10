@@ -466,6 +466,9 @@ void setup() {
 }
 
 void loop() {
+    char input = ' ';
+    std::cin >> input;
+    std::cout << input;
     if (game) {
       moveCamera();
 
@@ -474,10 +477,10 @@ void loop() {
       } else {
         updateCamera();
       }
-      /*} else if (digitalRead(STICK.SW) == LOW) {
+      /*} else if (input == 0x0A) {
       handleMapPreset(world);
       game = true;
-      digitalWrite(BUZZER, HIGH);
+      //digitalWrite(BUZZER, HIGH);
       transition(50, 90);*/
     } else {
       clearCamera();
