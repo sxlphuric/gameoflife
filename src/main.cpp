@@ -13,7 +13,7 @@ const int CHUNK_SIZE = 8;
 const int CAMERA_SIZE = 8;
 const int MAX_PAN_SPEED = 1;
 const int MAX_CHUNKS = 512;
-const uint16_t MAX_GENERATIONS = 300000;
+const uint32_t MAX_GENERATIONS = 300000;
 
 bool game = false;
 bool autoplay = true;
@@ -624,6 +624,9 @@ void loop() {
 }
 
 int main() {
+    initscr()
+    noecho();
+    cbreak();
     game = true;
     setup();
     handleMapPreset(world);
