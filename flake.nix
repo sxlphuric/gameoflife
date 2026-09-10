@@ -46,8 +46,7 @@
         gtest
 
         # Build time and Run time dependencies
-        spdlog
-        abseil-cpp
+        ncurses
       ];
 
       # Setting up the environment variables you need during
