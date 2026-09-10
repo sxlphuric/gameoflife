@@ -203,16 +203,6 @@ void randomMap() {
     }
   }
 
-  std::cout << "generated:\n";
-
-  for (int y = -8; y < 8; y++) {
-    for (int x = -8; x < 8; x++) {
-      std::cout << (getCell(x, y) ? '#' : '.');
-    }
-    std::cout << std::endl;
-  }
-}
-
 void clearBoard() {
     chunksCount = 0;
 }
