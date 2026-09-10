@@ -4,6 +4,7 @@
 #include <thread>
 #include <cmath>
 #include <cstdlib>
+#include <ncurses.h>
 
 using namespace std::chrono_literals;
 using namespace std::this_thread;
@@ -624,14 +625,18 @@ void loop() {
 }
 
 int main() {
-    initscr()
+    initscr();
     noecho();
     cbreak();
     game = true;
     setup();
     handleMapPreset(world);
-    for(int i = 0; i < MAX_GENERATIONS; i++) {
+    printw("i shall curse you with the n-curse");
+    refresh();
+    /*for(int i = 0; i < MAX_GENERATIONS; i++) {
         loop();
-    }
+        }*/
+    getch();
+    endwin();
     return 0;
 }
