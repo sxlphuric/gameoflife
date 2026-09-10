@@ -1,19 +1,30 @@
-{
-  lib,
-  llvmPackages_23,
-  cmake,
-  spdlog,
-  abseil-cpp,
-}: let
-  files = ./main.cpp;
-in
-  lib.fileset.trace files
-  llvmPackages_23.stdenv.mkDerivation {
-    pname = "gameoflife";
-    version = "4.0.1";
+{ lib
+, llvmPackages_23
+, cmake
+, spdlog
+, abseil-cpp }:
 
-    src = lib.fileset.toSource {
-      root = ./.;
-      fileset = files;
-    };
-  }
+llvmPackages_23.stdenv.mkDerivation rec {
+  pname = "cpp-examples";
+  version = "0.1.0";
+
+  src = ./.;
+
+  nativeBuildInputs = [ cmake ];
+  buildInputs = [ spdlog abseil-cpp ];
+
+  cmakeFlags = [
+    "-DENABLE_TESTING=OFF"
+    "-DENABLE_INSTALL=ON"
+  ];
+
+  meta = with lib; {
+    homepage = "https://github.com/nixvital/nix-based-cpp-starterkit";
+    description = ''
+      A template for Nix based C++ project setup.";
+    '';
+    licencse = licenses.mit;
+    platforms = with platforms; linux ++ darwin;
+    maintainers = [ maintainers.breakds ];
+  };
+}
