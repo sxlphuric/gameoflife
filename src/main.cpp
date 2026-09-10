@@ -452,10 +452,10 @@ void nextFrame() {
 
   updateCamera();
   auto end = system_clock::now();
-  if (!speedMeasured) {
+  /*if (!speedMeasured) {
     speedMeasured = true;
     std::cout << "Generation compute speed: " << end - start << "ms\n";
-  };
+  };*/
 }
 
 
