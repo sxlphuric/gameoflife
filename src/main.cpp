@@ -7,6 +7,7 @@
 #include <ncurses.h>
 
 using namespace std::chrono_literals;
+using namespace std::chrono;
 using namespace std::this_thread;
 using byte = uint8_t;
 
@@ -20,6 +21,10 @@ bool game = false;
 bool autoplay = true;
 
 int chunksCount = 0;
+
+auto startTime = steady_clock::now();
+
+int generationsPerSecond = 10;
 
 struct Chunk {
     int x;
@@ -451,16 +456,6 @@ void nextGeneration() {
   chunksCount = finalCount;
 }
 
-void moveCamera() {
-  // cameraX += mappedStickX;
-  // cameraY += mappedStickY;
-
-  sleep_for(250ms);
-  if (!autoplay) sleep_for(25ms);
-}
-
-
-
 void nextFrame() {
     using namespace std::chrono;
   auto start = system_clock::now();
@@ -478,6 +473,7 @@ void nextFrame() {
 
 void setup() {
     std::srand(std::time(0));
+    startTime = steady_clock::now();
     updateCamera();
     display();
 }
@@ -509,9 +505,9 @@ void loop() {
         move(0,0);
 
     if (game) {
-      moveCamera();
 
-      if (autoplay) {
+      if (autoplay && (duration_cast<milliseconds>(steady_clock::now() - startTime) >= milliseconds(1000/generationsPerSecond))) {
+          startTime = steady_clock::now();
         nextFrame();
       } else {
         updateCamera();
@@ -658,6 +654,8 @@ void loop() {
           break;
       }
     }
+
+    sleep_for(1ms);
 
     display();
     refresh();
