@@ -498,6 +498,12 @@ void loop() {
             cameraY++;
             break;
 
+        case '\n':
+            handleMapPreset(world);
+            game = true;
+            transition(50,90);
+            break;
+
         case ERR:
             break;
     }
@@ -667,9 +673,7 @@ int main() {
     nodelay(stdscr,true);
     keypad(stdscr,true);
     cbreak();
-    game = true;
     setup();
-    handleMapPreset(world);
     for(int i = 0; i < MAX_GENERATIONS; i++) {
         loop();
     }
