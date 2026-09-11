@@ -483,8 +483,31 @@ void setup() {
 }
 
 void loop() {
+        int key = getch();
+
+    switch (key) {
+        case KEY_LEFT:
+            cameraX--;
+            break;
+
+        case KEY_RIGHT:
+            cameraX++;
+            break;
+
+        case KEY_UP:
+            cameraY--;
+            break;
+
+        case KEY_DOWN:
+            cameraY++;
+            break;
+
+        case ERR:
+            break;
+    }
     erase();
-    move(0,0);
+        move(0,0);
+
     if (game) {
       moveCamera();
 
@@ -643,6 +666,8 @@ void loop() {
 int main() {
     initscr();
     noecho();
+    nodelay(stdscr,true);
+    keypad(stdscr,true);
     cbreak();
     game = true;
     setup();
