@@ -203,7 +203,7 @@ void randomMap() {
   cameraY = 0;
   for (int8_t r = -8; r < 8; r++) {
     for (int8_t c = -8; c < 8; c++) {
-      if (std::rand() % 1 <= 30) {
+      if (std::rand() % 100 <= 30) {
         setCell(r, c, true);
       }
     }
