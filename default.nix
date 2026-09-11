@@ -4,8 +4,8 @@
 , ncurses }:
 
 llvmPackages_23.stdenv.mkDerivation rec {
-  pname = "cpp-examples";
-  version = "0.1.0";
+  pname = "gameoflife";
+  version = "4.0.1";
 
   src = ./.;
 
@@ -18,9 +18,9 @@ llvmPackages_23.stdenv.mkDerivation rec {
   ];
 
   meta = with lib; {
-    homepage = "https://github.com/nixvital/nix-based-cpp-starterkit";
+    homepage = "https://github.com/sxlphuric/gameoflife";
     description = ''
-      A template for Nix based C++ project setup.";
+      Simple C++ implementation of Conway's Game Of Life with ncurses";
     '';
     licencse = licenses.mit;
     platforms = with platforms; linux ++ darwin;

@@ -34,7 +34,7 @@
   in {
     devShells.default = pkgs.mkShell rec {
       # Update the name to something that suites your project.
-      name = "my-c++-project";
+      name = "gameoflife";
 
       packages = with pkgs; [
         # Development Tools
