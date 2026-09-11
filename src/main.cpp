@@ -253,10 +253,23 @@ void displayByte(byte by) {
 }
 
 void display() {
+    addch(ACS_ULCORNER);
+    for (uint8_t row = 0; row < 8; row++) {
+        addch(ACS_HLINE);
+    }
+    addch(ACS_URCORNER);
+    printw("\n");
   for (uint8_t row = 0; row < 8; row++) {
+      addch(ACS_VLINE);
     displayByte(camera[row]);
-    std::cout << std::endl;
+    addch(ACS_VLINE);
+    printw("\n");
   };
+  addch(ACS_LLCORNER);
+  for (uint8_t row = 0; row < 8; row++) {
+         addch(ACS_HLINE);
+     }
+  addch(ACS_LRCORNER);
 }
 
 
