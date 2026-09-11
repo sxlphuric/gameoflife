@@ -498,6 +498,16 @@ void loop() {
             cameraY++;
             break;
 
+        case '1':
+            world = 1;
+            break;
+        case '2':
+            world = 2;
+            break;
+        case '3':
+            world = 3;
+            break;
+
         case '\n':
             handleMapPreset(world);
             game = true;
