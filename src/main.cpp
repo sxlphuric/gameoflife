@@ -236,13 +236,19 @@ void updateCamera() {
   for (uint8_t row = 0; row < CAMERA_SIZE; row++) {
     camera[row] = getChunkByte(cameraX, cameraY, row);
   }
-  std::cout << "camera x: " << cameraX << std::endl;
-  std::cout << "camera y: " << cameraY << std::endl;
+  printw("camera x: %d\n",cameraX);
+  printw("camera y: %d\n",cameraY);
 }
 
 void displayByte(byte by) {
     for (uint8_t b = 0; b < 8; b++) {
-        std::cout << (bitRead(by,b) ? "█" : " ");
+        if (bitRead(by,b)) {
+            attron(A_REVERSE);
+            printw(" ");
+            attroff(A_REVERSE);
+        } else {
+            printw(" ");
+        }
     }
 }
 
@@ -418,17 +424,14 @@ void nextGeneration() {
     }
   }
 
-  std::cout << "old chunks: ";
-  std::cout << chunksCount;
+  printw("old chunks: %d",chunksCount);
 
-  std::cout << " candidates: ";
-  std::cout << newChunkCount;
+  printw(" candidates: %d", newChunkCount);
 
-  std::cout << " final: ";
-  std::cout << finalCount << std::endl;
+  printw(" final: %d\n", finalCount);
 
             if (finalCount >= MAX_CHUNKS) {
-            std::cout << "optimize yo shit\n";
+                printw("optimize yo shit\n");
             return;
           }
 
@@ -467,9 +470,8 @@ void setup() {
 }
 
 void loop() {
-    char input = ' ';
-    std::cin >> input;
-    std::cout << input;
+    erase();
+    move(0,0);
     if (game) {
       moveCamera();
 
@@ -622,6 +624,7 @@ void loop() {
     }
 
     display();
+    refresh();
 }
 
 int main() {
@@ -631,11 +634,9 @@ int main() {
     game = true;
     setup();
     handleMapPreset(world);
-    printw("i shall curse you with the n-curse");
-    refresh();
-    /*for(int i = 0; i < MAX_GENERATIONS; i++) {
+    for(int i = 0; i < MAX_GENERATIONS; i++) {
         loop();
-        }*/
+    }
     getch();
     endwin();
     return 0;
