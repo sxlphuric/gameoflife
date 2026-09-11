@@ -244,17 +244,17 @@ void displayByte(byte by) {
     for (uint8_t b = 0; b < 8; b++) {
         if (bitRead(by,b)) {
             attron(A_REVERSE);
-            printw(" ");
+            printw("  ");
             attroff(A_REVERSE);
         } else {
-            printw(" ");
+            printw("  ");
         }
     }
 }
 
 void display() {
     addch(ACS_ULCORNER);
-    for (uint8_t row = 0; row < 8; row++) {
+    for (uint8_t row = 0; row < 16; row++) {
         addch(ACS_HLINE);
     }
     addch(ACS_URCORNER);
@@ -266,7 +266,7 @@ void display() {
     printw("\n");
   };
   addch(ACS_LLCORNER);
-  for (uint8_t row = 0; row < 8; row++) {
+  for (uint8_t row = 0; row < 16; row++) {
          addch(ACS_HLINE);
      }
   addch(ACS_LRCORNER);
