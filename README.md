@@ -8,10 +8,10 @@
 
 *Built with C++ and ncurses for ease of use*
 
-![Version](https://img.shields.io/badge/version-0.1.0-yellow)
-![Commit Activity](https://img.shields.io/github/commit-activity/m/sxlphuric/replay-manager?style=flat)
-![CI](https://img.shields.io/github/actions/workflow/status/sxlphuric/replay-manager/rust.yml?label=CI&style=flat)
-![Stars](https://img.shields.io/github/stars/sxlphuric/replay-manager?style=flat)
+![Version](https://img.shields.io/badge/version-4.0.1-yellow)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/sxlphuric/gameoflife?style=flat)
+<!---![CI](https://img.shields.io/github/actions/workflow/status/sxlphuric/replay-manager/rust.yml?label=CI&style=flat)-->
+![Stars](https://img.shields.io/github/stars/sxlphuric/gameoflife?style=flat)
 
 [Installation](#Building) • [Roadmap](#Roadmap) • [Structure](#Structure)
 
@@ -21,14 +21,14 @@
 
 ## Overview
 
-The Replay Manager is an opinionated video browser built using **Rust** and **egui**. It's goal is to *somewhat* replicate **Medal**'s features (excluding the social media part)
+Gameoflife is a simple implementation of Conway's life using **C++** and **ncurses**. I built a fun project for my Arduino, and I wanted to adapt it to a terminal game.
 
 ### Key Features
 
-- 🎞 **Automatic Thumbnail Generation** - Works cross-platform using FFmpeg
-- 💾 **Cloud Save** - Upload your files to Catbox or Litterbox for easy sharing
-- 📈 **Video Edit** - Open replays in an editor of choice (default losslesscut)
-- ⭐ **Favorites** - Favorite replays to find them easily
+- ⚡ **Fast (not blazingly)** - Using bitwise algorithms to speed up the process
+- 🔋 **Batteries included** - Comes with three presets of worlds to choose from
+- 🌐 **Infinite** - Infinite world using an 8x8 chunk system
+- 🎛️ **Configurable** - Generation speed regulation system
 
 ## Screenshots
 
